@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sumer.mapper.ReptileMapper">
+    <insert id="addAddress">
+        insert into web_address(id,address) VALUES (seq_address.NEXTVAL,#{str})
+    </insert>
+
+    <select id="getAddress" resultType='com.sumer.entity.Web_Address'>
+        select * from web_address where status='1' and rownum = 1
+    </select>
+
+    <select id="getAllAddress" resultType='com.sumer.entity.Web_Address'>
+        select * from web_address where status='1'
+    </select>
+
+    <insert id="addAllURL">
+        insert into URL_TABLE(id,url,pid,status) VALUES (URL_SEQ.NEXTVAL,#{url},#{pid},#{status})
+    </insert>
+
+    <select id="getOneURL" resultType='com.sumer.entity.URLBean'>
+        select * from url_table where status='1' and rownum = 1
+    </select>
+
+    <update id="updateStatus">
+        update url_table set status=0 where id=#{id}
+    </update>
+
+    <select id="getAllReceiveBean" resultType='com.sumer.entity.ReceiveBean'>
+        select * from receive_table
+    </select>
+
+</mapper>
